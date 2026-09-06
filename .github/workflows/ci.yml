@@ -50,7 +50,9 @@ jobs:
         run: mypy src
 
       - name: Run public synthetic tests
-        run: pytest -q -m "not spark" --ignore=tests/test_historical_reference.py --basetemp=.local-runs/pytest-public-unit
+        run: |
+          mkdir -p .local-runs
+          pytest -q -m "not spark" --ignore=tests/test_historical_reference.py --basetemp=.local-runs/pytest-public-unit
 
       - name: Run small Spark parity fixture
         run: pytest -q tests/test_spark_fixture.py --basetemp=.local-runs/pytest-public-spark
