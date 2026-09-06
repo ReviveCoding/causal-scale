@@ -47,6 +47,7 @@ PUBLIC_EVIDENCE = frozenset(
 PRIVATE_DIRECTORY_NAMES = frozenset(
     {
         ".git",
+        ".ci-wheel",
         ".codex_task",
         ".reference",
         ".local-data",
