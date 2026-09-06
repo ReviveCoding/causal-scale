@@ -1,0 +1,36 @@
+{
+  "records": [
+    {
+      "backend": "MAP_IN_PANDAS",
+      "operation_class": "SCORING_ONLY",
+      "parallel_efficiency": 1.0,
+      "rows": 1000000,
+      "rows_per_sec": 27295.32867335642,
+      "runtime": 36.63630550000016,
+      "speedup": 1.0,
+      "threads_or_workers": 1
+    },
+    {
+      "backend": "MAP_IN_PANDAS",
+      "operation_class": "SCORING_ONLY",
+      "parallel_efficiency": 0.8247966563154685,
+      "rows": 1000000,
+      "rows_per_sec": 45026.19164563222,
+      "runtime": 22.20929559999786,
+      "speedup": 1.649593312630937,
+      "threads_or_workers": 2
+    },
+    {
+      "backend": "MAP_IN_PANDAS",
+      "operation_class": "SCORING_ONLY",
+      "parallel_efficiency": 0.3268460264155094,
+      "rows": 1000000,
+      "rows_per_sec": 35685.47886636746,
+      "runtime": 28.02260279999973,
+      "speedup": 1.3073841056620377,
+      "threads_or_workers": 4
+    }
+  ],
+  "same_machine_workers_not_nodes": true,
+  "status": "PASS"
+}

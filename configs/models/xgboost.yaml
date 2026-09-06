@@ -1,0 +1,10 @@
+seed: 20260717
+n_estimators: 300
+max_depth: 6
+learning_rate: 0.05
+subsample: 0.85
+colsample_bytree: 0.9
+min_child_weight: 20
+tree_method: hist
+device: auto
+n_jobs: 8

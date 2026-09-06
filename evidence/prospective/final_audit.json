@@ -1,0 +1,27 @@
+{
+  "schema": "causal-scale-final-prospective-audit-v1",
+  "status": "PASS",
+  "scientific_contract_sha256": "240dfe619f5e251bcc2673ef876dc37911618caae5421f76e8f218f55e2fb5e3",
+  "scientific_contract_digest_match": true,
+  "feature_policy_metadata_sha256": "8a12f0b36836d01d1078d2504455b758004622d717c19b21823293d24b2363e1",
+  "feature_policy_metadata_digest_match": true,
+  "feature_policy_artifact_sha256": "2cffd5c409c753989e35c02c3fb23e4c89eee752499609e328a881d38b4465b4",
+  "feature_policy_artifact_digest_match": true,
+  "feature_policy_contract_binding": true,
+  "row_ids_sha256": "13b42e83fe9a6063cafa73fe3ba2028f0d64788336d885dcfb31aac520bbe027",
+  "outcome_artifact_sha256": "15a0d97aa4aa2200899fa113da8602ad727235a4d059036a89c9a350d0814c54",
+  "outcome_rows": 2000000,
+  "outcome_row_ids_sha256": "13b42e83fe9a6063cafa73fe3ba2028f0d64788336d885dcfb31aac520bbe027",
+  "attempt_states": [
+    "OUTCOME_ACCESS_STARTED",
+    "COMPLETED"
+  ],
+  "attempt_count": 2,
+  "mechanical_retries": 0,
+  "result_status": "REPLICATED",
+  "primary_gates": {
+    "H1_value_noninferiority": true,
+    "H2_calibration_superiority": true
+  },
+  "report_metric_agreement": true
+}

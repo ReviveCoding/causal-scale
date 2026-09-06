@@ -1,0 +1,25 @@
+seed: 20260717
+features: [f0, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11]
+treatment: treatment
+outcome: visit
+auxiliary_outcomes: [conversion]
+prohibited_features: [treatment, exposure, visit, conversion]
+development:
+  priority_windows: [[0, 250000], [250000, 250000]]
+  model_train_rows: 350000
+  affine_calibration_rows: 75000
+  rsec_calibration_rows: 75000
+historical_locked:
+  priority_window: [750000, 2000000]
+prospective:
+  priority_window: [2750000, 2000000]
+capacities: [0.05, 0.10, 0.20, 0.30, 0.50]
+primary_capacity: 0.20
+propensity_rule: frozen_randomized_treatment_rate
+bootstrap:
+  cluster: exact_pretreatment_profile
+  replicates: 4000
+  seed: 20261620
+multiplicity: holm
+value_noninferiority_margin: -0.00025
+calibration_superiority_margin: 0.0

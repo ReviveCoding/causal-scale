@@ -1,0 +1,5 @@
+memory_fraction: 0.80
+default_heavy_jobs_per_gpu: 1
+oom_retry:
+  max_bin: 128
+  max_batch_rows: 100000

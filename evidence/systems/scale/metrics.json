@@ -1,0 +1,34 @@
+{
+  "authentic_rows": 13979592,
+  "direct_1m": {
+    "backend": "SPARK_MAP_IN_PANDAS",
+    "memory": null,
+    "operation_class": "SCORING_ONLY",
+    "parallel_efficiency": null,
+    "parity_status": "MODEL_SCORED",
+    "rows": 1000000,
+    "rows_per_sec": 51506.70265220909,
+    "runtime": 19.4149488999974,
+    "shuffle": null,
+    "speedup": null,
+    "spill": null,
+    "threads_or_workers": "local[4]"
+  },
+  "full_13_98m": {
+    "backend": "SPARK_MAP_IN_PANDAS",
+    "memory": null,
+    "operation_class": "SCORING_ONLY",
+    "parallel_efficiency": null,
+    "parity_status": "MODEL_SCORED",
+    "rows": 13979592,
+    "rows_per_sec": 205521.19277972597,
+    "runtime": 68.02019690000088,
+    "shuffle": null,
+    "speedup": null,
+    "spill": null,
+    "threads_or_workers": "local[4]"
+  },
+  "operation_class": "SCORING_ONLY",
+  "outcomes_accessed": false,
+  "status": "PASS"
+}

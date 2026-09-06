@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use CAUSAL-SCALE, please cite this software release."
+title: "CAUSAL-SCALE: Distributed Causal ML & Policy Evaluation at Scale"
+type: software
+authors:
+  - name: "CAUSAL-SCALE contributors"
+repository-code: "https://github.com/ReviveCoding/causal-scale"
+version: 1.0.0
+date-released: 2026-09-06
+license: MIT

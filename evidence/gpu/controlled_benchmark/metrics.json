@@ -1,0 +1,50 @@
+{
+  "benchmark": [
+    {
+      "cpu_gpu_speedup": 0.6929718430215309,
+      "device": "cuda",
+      "inference_time": 0.1105055000007269,
+      "model": "GPU_T",
+      "peak_vram": 212.0,
+      "policy_agreement": 0.91494,
+      "prediction_agreement": 0.903081343657927,
+      "telemetry_after": [
+        {
+          "index": 0,
+          "memory_used_mib": 212.0,
+          "power_w": 31.61,
+          "temperature_c": 69.0,
+          "timestamp": "2026-09-06T19:40:51.760832+00:00",
+          "utilization_pct": 44.0
+        }
+      ],
+      "telemetry_before": [
+        {
+          "index": 0,
+          "memory_used_mib": 212.0,
+          "power_w": 30.72,
+          "temperature_c": 69.0,
+          "timestamp": "2026-09-06T19:40:51.161155+00:00",
+          "utilization_pct": 0.0
+        }
+      ],
+      "train_time": 0.4352294999989681
+    }
+  ],
+  "gpu_parallelism_actually_used": 1,
+  "qualification": {
+    "elapsed_seconds": 0.789605500000107,
+    "error": null,
+    "gpus": [
+      {
+        "driver": "610.62",
+        "index": 0,
+        "name": "NVIDIA GeForce RTX 4090 Laptop GPU",
+        "power_w": 32.01,
+        "temperature_c": 69.0,
+        "vram_mib": 16376
+      }
+    ],
+    "status": "GPU_XGBOOST_AVAILABLE"
+  }
+}

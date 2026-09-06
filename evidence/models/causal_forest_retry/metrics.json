@@ -1,0 +1,8 @@
+{
+  "attempts": 2,
+  "first_attempt": "PermissionError: [WinError 5] Access is denied",
+  "retry": "workspace-local JOBLIB_TEMP_FOLDER with unchanged 400 trees, cv=3, n_jobs=4",
+  "retry_result": "PermissionError: [WinError 5] Access is denied in multiprocessing.connection.Pipe/CreateFile",
+  "scientific_parameters_changed": false,
+  "status": "SANDBOX_TOOLING_BLOCKER"
+}

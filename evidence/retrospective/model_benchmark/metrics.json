@@ -1,0 +1,15 @@
+{
+  "capacity_primary": 0.2,
+  "cluster_inference": {
+    "method": "cluster_robust_normal; exact historical 4000-replicate bootstrap restored for E7/C3",
+    "primary_capacity": 0.2,
+    "status": "PASS",
+    "unique_clusters": 1956145,
+    "unit": "exact_pretreatment_profile"
+  },
+  "elapsed_seconds": 251.77273200000127,
+  "historical_c3_value": 0.005643564219054696,
+  "historical_e7_value": 0.0060410157508602735,
+  "rows": 2000000,
+  "status": "PASS"
+}

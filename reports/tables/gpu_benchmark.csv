@@ -1,0 +1,2 @@
+model,device,train_time,inference_time,cpu_gpu_speedup,peak_vram,prediction_agreement,policy_agreement
+GPU_T,cuda,0.4352294999989681,0.1105055000007269,0.6929718430215309,212.0,0.903081343657927,0.91494

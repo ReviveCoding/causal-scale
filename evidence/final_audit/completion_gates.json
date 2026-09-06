@@ -1,0 +1,27 @@
+{
+  "schema": "causal-scale-completion-gates-v1",
+  "status": "PASS",
+  "gates": {
+    "HISTORICAL_REFERENCE_PASS": "PASS",
+    "DATA_QUALIFIED": "PASS",
+    "MODEL_BENCHMARK_PASS": "PASS",
+    "GPU_QUALIFIED": "PASS",
+    "DISTRIBUTED_PARITY_PASS": "PASS",
+    "SCALE_QUALIFIED": "PASS",
+    "ENGINEERING_QUALIFIED": "PASS",
+    "PROSPECTIVE_FINAL": "REPLICATED"
+  },
+  "qualified_with_recorded_p1_blocker": {
+    "component": "CAUSAL_FOREST",
+    "status": "SANDBOX_TOOLING_BLOCKER",
+    "attempts": 2,
+    "scientific_parameters_weakened": false
+  },
+  "optional_omissions": {
+    "DRAGONNET": "SKIPPED_GPU_ENV",
+    "IHDP_FULL_REPLICATIONS": "SKIPPED_RESOURCE_LIMIT",
+    "HILLSTROM": "OPTIONAL_NOT_RUN",
+    "ONNX_CUDA_MIRROR": "OPTIONAL_NOT_RUN",
+    "PHYSICAL_MULTI_NODE_SPARK": "NO_EXISTING_ENVIRONMENT"
+  }
+}

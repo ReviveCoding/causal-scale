@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=80", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "causal-scale"
+version = "0.1.0"
+description = "GPU-accelerated and distributed causal ML for capacity-constrained policy evaluation"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "CAUSAL-SCALE contributors"}]
+dependencies = [
+  "joblib>=1.5,<2",
+  "matplotlib>=3.9,<4",
+  "numpy>=2.0,<2.4",
+  "pandas>=2.2,<3",
+  "psutil>=6,<8",
+  "pyarrow>=18,<23",
+  "PyYAML>=6,<7",
+  "scikit-learn==1.8.0",
+  "scipy>=1.14,<2",
+  "xgboost>=3,<4",
+]
+
+[project.optional-dependencies]
+spark = ["pyspark==4.2.0"]
+forest = ["econml>=0.16,<1"]
+causalml = ["causalml>=0.16,<1"]
+dev = ["build>=1.2,<2", "mypy>=1.13,<2", "pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1"]
+
+[project.scripts]
+causal-scale = "causal_scale.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.11"
+check_untyped_defs = true
+ignore_missing_imports = true
+warn_unused_ignores = true
+exclude = ["build/", "dist/", ".reference/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: local integration test", "spark: requires PySpark and Java 17+"]

@@ -1,0 +1,102 @@
+# Python environments, caches, coverage, and builds
+.venv/
+.venv-*/
+.ci-wheel/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Publication-private tasking and predecessor material
+.codex_task/
+.reference/
+
+# Local publication receipts contain machine-specific paths and post-commit state
+reports/GIT_ISOLATION_RECEIPT.json
+reports/GITHUB_PUBLICATION_RECEIPT.json
+
+# Local data, models, execution state, Spark, GPU, and tools
+.local-data/
+.local-cache/
+.local-runs/
+.local-models/
+.local-spark/
+.local-gpu/
+.local-tools/
+spark-warehouse/
+metastore_db/
+derby.log
+.sparkStaging/
+hs_err_pid*
+replay_pid*
+*.log
+
+# Raw or unsafe data/model/binary artifacts
+*.parquet
+*.csv.gz
+*.tsv.gz
+*.jsonl
+*.feather
+*.arrow
+*.npy
+*.npz
+*.joblib
+*.pkl
+*.pickle
+*.onnx
+*.dmp
+*.core
+*.zip
+*.7z
+*.tar
+*.tgz
+*.tar.gz
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# The local evidence tree contains machine-bound manifests and large sealed
+# artifacts. Publish only this compact aggregate allowlist.
+evidence/**
+!evidence/final_audit/
+!evidence/final_audit/completion_gates.json
+!evidence/prospective/
+!evidence/prospective/final_audit.json
+!evidence/spark/
+!evidence/spark/historical_parity/
+!evidence/spark/historical_parity/metrics.json
+!evidence/systems/
+!evidence/systems/scale/
+!evidence/systems/scale/metrics.json
+!evidence/systems/local_scaling/
+!evidence/systems/local_scaling/metrics.json
+!evidence/gpu/
+!evidence/gpu/controlled_benchmark/
+!evidence/gpu/controlled_benchmark/metrics.json
+!evidence/retrospective/
+!evidence/retrospective/model_benchmark/
+!evidence/retrospective/model_benchmark/metrics.json
+!evidence/retrospective/capacity_frontier/
+!evidence/retrospective/capacity_frontier/capacity_frontier.csv
+!evidence/historical_reference/
+!evidence/historical_reference/historical_metrics.json
+!evidence/models/
+!evidence/models/causal_forest_retry/
+!evidence/models/causal_forest_retry/metrics.json
+
+# Aggregate report CSV files and dependency locks are intentionally public.
+!reports/tables/*.csv
+!requirements.lock

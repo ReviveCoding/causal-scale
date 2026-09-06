@@ -1,0 +1,26 @@
+# Final Status
+
+- Workspace: `<repo>`
+- Historical reference: ORBIT-Causal v0.3.9; verdict `RELEASE_ELIGIBLE`
+- Environment: Python 3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]; Spark 4.2.0; GPU `GPU_XGBOOST_AVAILABLE`
+- Dataset: `PASS`; rows `13979592`
+- Models: CONSTANT_ATE=PASS, GPU_T=PASS, INDEPENDENT_AIPW_NUISANCE=PASS, R_LEARNER=PASS, RESPONSE_MARGINAL=PASS, RESPONSE_TREATED=PASS, X_LEARNER=PASS, CAUSAL_FOREST=SANDBOX_TOOLING_BLOCKER
+- GPU path used: `GPU_XGBOOST_AVAILABLE`; controlled CUDA train `0.4352294999989681` seconds; CPU/GPU speedup `0.6929718430215309`
+- GPU parallelism actually used: 1 heavy GPU job
+- Historical E7/C3/delta: `0.006041015750860274` / `0.005643564219054695` / `0.0003974515318055772`
+- Retrospective benchmark: `reports/tables/model_benchmark.csv`
+- ORBIT ablation: `[{'model': 'HIST_C1', 'policy_value': 0.0058803495588082, 'calibration_rmse': 0.0128026406151268}, {'model': 'HIST_C3', 'policy_value': 0.0056435642190546, 'calibration_rmse': 0.0094704722132866}, {'model': 'HIST_C3_COMMON_CAL', 'policy_value': 0.0056435642190546, 'calibration_rmse': 0.0063764152387584}, {'model': 'HIST_C5', 'policy_value': 0.0056716960963006, 'calibration_rmse': 0.0082462000512184}, {'model': 'HIST_PRE_FINAL_BLEND', 'policy_value': 0.0060410157508602, 'calibration_rmse': 0.0098245580103199}, {'model': 'HIST_E7', 'policy_value': 0.0060410157508602, 'calibration_rmse': 0.0050883992851505}]`
+- Spark parity: `PASS`
+- Direct 1M: `{'backend': 'SPARK_MAP_IN_PANDAS', 'memory': None, 'operation_class': 'SCORING_ONLY', 'parallel_efficiency': None, 'parity_status': 'MODEL_SCORED', 'rows': 1000000, 'rows_per_sec': 51506.70265220909, 'runtime': 19.4149488999974, 'shuffle': None, 'speedup': None, 'spill': None, 'threads_or_workers': 'local[4]'}`
+- 13.98M feature-only: `{'backend': 'SPARK_MAP_IN_PANDAS', 'memory': None, 'operation_class': 'SCORING_ONLY', 'parallel_efficiency': None, 'parity_status': 'MODEL_SCORED', 'rows': 13979592, 'rows_per_sec': 205521.19277972597, 'runtime': 68.02019690000088, 'shuffle': None, 'speedup': None, 'spill': None, 'threads_or_workers': 'local[4]'}`
+- Local scaling: `[{'backend': 'MAP_IN_PANDAS', 'operation_class': 'SCORING_ONLY', 'parallel_efficiency': 1.0, 'rows': 1000000, 'rows_per_sec': 27295.32867335642, 'runtime': 36.63630550000016, 'speedup': 1.0, 'threads_or_workers': 1}, {'backend': 'MAP_IN_PANDAS', 'operation_class': 'SCORING_ONLY', 'parallel_efficiency': 0.8247966563154685, 'rows': 1000000, 'rows_per_sec': 45026.19164563222, 'runtime': 22.20929559999786, 'speedup': 1.649593312630937, 'threads_or_workers': 2}, {'backend': 'MAP_IN_PANDAS', 'operation_class': 'SCORING_ONLY', 'parallel_efficiency': 0.3268460264155094, 'rows': 1000000, 'rows_per_sec': 35685.47886636746, 'runtime': 28.02260279999973, 'speedup': 1.3073841056620377, 'threads_or_workers': 4}]`
+- Optional worker scaling: `NOT_RUN` (no already-working WSL/Linux Spark Standalone environment)
+- Capacity frontier: `[{'capacity': 0.05, 'HIST_C3': 0.0036292690500002, 'HIST_E7': 0.003712909618361, 'e7_minus_c3': 8.364056836080011e-05}, {'capacity': 0.1, 'HIST_C3': 0.0048965993037125, 'HIST_E7': 0.0050012186632468, 'e7_minus_c3': 0.0001046193595343}, {'capacity': 0.2, 'HIST_C3': 0.0056435642190546, 'HIST_E7': 0.0060410157508602, 'e7_minus_c3': 0.0003974515318055}, {'capacity': 0.3, 'HIST_C3': 0.0059984972935221, 'HIST_E7': 0.0063129410855523, 'e7_minus_c3': 0.0003144437920302}, {'capacity': 0.5, 'HIST_C3': 0.0063300888649998, 'HIST_E7': 0.0064795224316171, 'e7_minus_c3': 0.0001494335666172}]`
+- External benchmark: `PASS`
+- Prospective contract SHA: `240dfe619f5e251bcc2673ef876dc37911618caae5421f76e8f218f55e2fb5e3`
+- Prospective final status: **REPLICATED**
+- Prospective primary estimates: `{'candidate_value': 0.006312739030953322, 'baseline_value': 0.005908982393999444, 'value_difference': 0.0004037566369538779, 'candidate_calibration_rmse': 0.004953033127283974, 'baseline_calibration_rmse': 0.008886300452459766, 'calibration_rmse_difference': -0.0039332673251757915, 'gates': {'H1_value_noninferiority': True, 'H2_calibration_superiority': True}}`
+- Engineering qualification: `PASS`
+- Remaining blockers/optional omissions: Causal Forest `SANDBOX_TOOLING_BLOCKER`; IHDP full suite `SKIPPED_RESOURCE_LIMIT`; Hillstrom, DragonNet/JAX, ONNX CUDA, and physical multi-node Spark not run
+- Limitations: offline value is not online revenue; local Spark workers are not physical nodes; CUDA speed is not causal superiority; full-source scale is systems-only
+- Reports: `reports/TECHNICAL_REPORT.md`, `reports/METHODS_AND_ESTIMANDS.md`, `reports/LIMITATIONS.md`

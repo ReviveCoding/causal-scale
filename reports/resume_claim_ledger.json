@@ -1,0 +1,38 @@
+[
+  {
+    "claim_boundary": "frozen ORBIT v0.3.9 only",
+    "claim_text": "Historical locked replay values and verdict",
+    "evidence_class": "HISTORICAL_PREDECESSOR",
+    "evidence_file": "evidence/historical_reference/historical_metrics.json",
+    "exact_metric_fields": [
+      "candidate_value",
+      "baseline_value",
+      "value_difference",
+      "verdict"
+    ],
+    "status": "APPROVED"
+  },
+  {
+    "claim_boundary": "systems-only, non-causal",
+    "claim_text": "Authentic 13.98M feature-only scoring throughput",
+    "evidence_class": "SYSTEMS_SCALE",
+    "evidence_file": "evidence/systems/scale/metrics.json",
+    "exact_metric_fields": [
+      "full_13_98m"
+    ],
+    "status": "APPROVED"
+  },
+  {
+    "claim_boundary": "fresh sealed 2M cohort",
+    "claim_text": "Prospective E7/C3 replication classification",
+    "evidence_class": "PROSPECTIVE",
+    "evidence_file": "evidence/prospective/prospective_results.json",
+    "exact_metric_fields": [
+      "status",
+      "value_difference",
+      "calibration_rmse_difference",
+      "gates"
+    ],
+    "status": "APPROVED"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "application_id": "local-1788726110625",
+  "artifact_sha256": "047dbfd1f0ae48418b0de15e6f5da299a5d6fb575ecf81790afacf7a0a5df004",
+  "historical_verdict": "RELEASE_ELIGIBLE",
+  "master": "local[4]",
+  "models": {
+    "HIST_C3": {
+      "aipw_abs_error": 5.0306980803327406e-17,
+      "aipw_rows": 2000000,
+      "aipw_value": 0.0056435642190546444,
+      "expected_aipw_value": 0.005643564219054695,
+      "max_score_error": 0.0,
+      "membership_mismatches": 0,
+      "policy_agreement": 1.0,
+      "rows": 2000000,
+      "runtime_seconds": 331.53674089999913,
+      "scored_rows": 2000000
+    },
+    "HIST_E7": {
+      "aipw_abs_error": 5.2909066017292616e-17,
+      "aipw_rows": 2000000,
+      "aipw_value": 0.006041015750860327,
+      "expected_aipw_value": 0.006041015750860274,
+      "max_score_error": 0.0,
+      "membership_mismatches": 0,
+      "policy_agreement": 1.0,
+      "rows": 2000000,
+      "runtime_seconds": 798.3203704000007,
+      "scored_rows": 2000000
+    }
+  },
+  "partitions": 128,
+  "schema": "causal-scale-spark-historical-parity-v1",
+  "spark_version": "4.2.0",
+  "status": "PASS"
+}

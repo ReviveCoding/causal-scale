@@ -1,0 +1,6 @@
+version: 4.2.0
+masters: [local[1], local[2], local[4]]
+partitions: [32, 64, 128, 256, 512]
+arrow_enabled: true
+event_log_enabled: true
+operational_retry_fields: [worker_count, executor_memory, arrow_batch_size, partition_count]
