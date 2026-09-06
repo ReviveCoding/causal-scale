@@ -38,7 +38,7 @@ jobs:
       - name: Install locked dependencies
         run: |
           grep -v '^-e \.[[:space:]]*$' requirements.lock > "${RUNNER_TEMP}/causal-scale-requirements.lock"
-          python -m pip install --require-hashes -r "${RUNNER_TEMP}/causal-scale-requirements.lock"
+          python -m pip install --no-deps --require-hashes -r "${RUNNER_TEMP}/causal-scale-requirements.lock"
           python -m pip install --no-deps .
 
       - name: Check formatting and lint
