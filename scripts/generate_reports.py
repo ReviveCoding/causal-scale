@@ -434,7 +434,7 @@ The repository contains a resumable hash-bound DAG, dependency lock, dataset and
     for claim in claims:
         claim["status"] = "APPROVED" if Path(str(claim["evidence_file"])).is_file() else "BLOCKED"
     atomic_json(REPORTS / "resume_claim_ledger.json", claims)
-    lines = ["# Resume Evidence Ledger", ""]
+    lines = ["# Evidence Traceability", ""]
     for claim in claims:
         lines.extend(
             [
@@ -447,7 +447,7 @@ The repository contains a resumable hash-bound DAG, dependency lock, dataset and
                 "",
             ]
         )
-    (REPORTS / "RESUME_EVIDENCE_LEDGER.md").write_text("\n".join(lines), encoding="utf-8")
+    (REPORTS / "EVIDENCE_TRACEABILITY.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 def main() -> None:
