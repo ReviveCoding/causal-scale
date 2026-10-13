@@ -105,7 +105,7 @@ Place the frozen predecessor checkout at `<repo>/.reference/ORBIT-Causal` when r
 - [Technical Report](reports/TECHNICAL_REPORT.md) and [Final Status](reports/FINAL_STATUS.md) — study narrative and completion state.
 - [Prospective summary](reports/tables/prospective_summary.csv) and [final audit](evidence/prospective/final_audit.json) — paired comparisons, seals, and gates.
 - [Completion gates](evidence/final_audit/completion_gates.json) — final project qualification and recorded omissions.
-- [Resume Evidence Ledger](reports/RESUME_EVIDENCE_LEDGER.md) — concise source-to-claim mappings.
+- [Evidence Traceability](reports/EVIDENCE_TRACEABILITY.md) — concise source-to-claim mappings.
 - [Detailed tables](reports/tables/) and [figures](reports/figures/) — compact aggregate outputs only.
 
 ## Limitations
