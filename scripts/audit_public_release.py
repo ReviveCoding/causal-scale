@@ -22,7 +22,7 @@ REQUIRED_FILES = (
     ".github/workflows/ci.yml",
     "reports/FINAL_STATUS.md",
     "reports/TECHNICAL_REPORT.md",
-    "reports/RESUME_EVIDENCE_LEDGER.md",
+    "reports/EVIDENCE_TRACEABILITY.md",
     "reports/RESULTS_ANALYSIS.md",
     "reports/RELEASE_NOTES_v1.0.0.md",
     "reports/PUBLIC_EVIDENCE_INDEX.md",

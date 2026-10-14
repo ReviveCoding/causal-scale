@@ -17,7 +17,7 @@ Only compact, aggregate, public-safe artifacts are indexed here. Raw data, row-l
 | [Causal Forest blocker](../evidence/models/causal_forest_retry/metrics.json) | Two unchanged-parameter attempts and the exact sandbox failure classification | Evidence that Causal Forest underperformed scientifically |
 | [Final Status](FINAL_STATUS.md) | Human-readable completion snapshot and durable limitations | A substitute for machine-readable evidence or an expanded claim boundary |
 | [Technical Report](TECHNICAL_REPORT.md) | Study scope, evidence-class separation, methods narrative, and prospective status | Row-level evidence, online outcomes, or unrecorded experiments |
-| [Resume Evidence Ledger](RESUME_EVIDENCE_LEDGER.md) | Approved source-to-claim mappings for the most important public statements | Authorization for claims beyond the cited fields |
+| [Resume Evidence Ledger](EVIDENCE_TRACEABILITY.md) | Approved source-to-claim mappings for the most important public statements | Authorization for claims beyond the cited fields |
 | [Results Analysis](RESULTS_ANALYSIS.md) | Baseline-aware interpretation, descriptive ratios, uncertainty, systems overhead, and resume-safe wording | New scientific estimates or a rerun of any experiment |
 
 The selected public machine-readable files are intentionally a subset of the local evidence tree. Ignored originals remain available to the release operator for local verification, but are not publication candidates when they contain machine-specific paths, raw artifacts, or unnecessary environment detail.
