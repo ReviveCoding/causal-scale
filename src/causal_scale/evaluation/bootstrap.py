@@ -22,27 +22,35 @@ def paired_cluster_bootstrap(
     seed: int = 20261620,
     alpha: float = 0.05,
 ) -> BootstrapEstimate:
-    x = np.asarray(values, dtype=float)
-    if x.ndim == 1:
-        x = x[:, None]
+    value_matrix = np.asarray(values, dtype=float)
+    if value_matrix.ndim == 1:
+        value_matrix = value_matrix[:, None]
     cluster_codes, uniques = pd.factorize(np.asarray(clusters), sort=True)
-    if len(x) != len(cluster_codes) or len(uniques) < 2:
+    if len(value_matrix) != len(cluster_codes) or len(uniques) < 2:
         raise ValueError("bootstrap inputs require aligned rows and at least two clusters")
-    counts = np.bincount(cluster_codes, minlength=len(uniques)).astype(float)
-    sums = np.column_stack(
+    cluster_count = len(uniques)
+    cluster_sizes = np.bincount(cluster_codes, minlength=cluster_count).astype(float)
+    cluster_sums = np.column_stack(
         [
-            np.bincount(cluster_codes, weights=x[:, col], minlength=len(uniques))
-            for col in range(x.shape[1])
+            np.bincount(cluster_codes, weights=value_matrix[:, col], minlength=cluster_count)
+            for col in range(value_matrix.shape[1])
         ]
     )
     rng = np.random.default_rng(seed)
-    draws = np.empty((replicates, x.shape[1]), dtype=float)
-    for replicate in range(replicates):
-        sampled = rng.integers(0, len(uniques), size=len(uniques))
-        draws[replicate] = sums[sampled].sum(axis=0) / counts[sampled].sum()
+    draws = np.empty((replicates, value_matrix.shape[1]), dtype=float)
+    # Preserve the RNG stream and reduction order while amortizing Python calls.
+    # Bound gathered arrays to approximately 8 MiB, or one replicate if larger.
+    bytes_per_replicate = cluster_count * (value_matrix.shape[1] + 2) * 8
+    batch_size = max(1, min(256, (8 * 1024 * 1024) // bytes_per_replicate))
+    for start in range(0, replicates, batch_size):
+        stop = min(start + batch_size, replicates)
+        sampled = rng.integers(0, cluster_count, size=(stop - start, cluster_count))
+        draws[start:stop] = (
+            cluster_sums[sampled].sum(axis=1) / cluster_sizes[sampled].sum(axis=1)[:, None]
+        )
     primary = draws[:, 0]
     return BootstrapEstimate(
-        float(x[:, 0].mean()),
+        float(value_matrix[:, 0].mean()),
         float(np.quantile(primary, alpha / 2)),
         float(np.quantile(primary, 1 - alpha / 2)),
         float(primary.std(ddof=1)),

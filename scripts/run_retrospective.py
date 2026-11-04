@@ -27,7 +27,7 @@ def model_scores(
     result = {
         name: historical.predict_effect(name, frame) for name in ("HIST_C1", "HIST_C3", "HIST_E7")
     }
-    devices = {name: "historical_cpu" for name in result}
+    devices = dict.fromkeys(result, "historical_cpu")
     for path in sorted(models.glob("*.joblib")):
         model = joblib.load(path)
         model_id = getattr(model, "model_id", "")

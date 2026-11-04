@@ -36,7 +36,7 @@ def main() -> None:
         mu1,
         historical.propensity,
     )
-    models: dict[str, object] = {name: historical for name in ("HIST_C1", "HIST_C3", "HIST_E7")}
+    models: dict[str, object] = dict.fromkeys(("HIST_C1", "HIST_C3", "HIST_E7"), historical)
     for path in args.models.glob("*.joblib"):
         model = joblib.load(path)
         model_id = getattr(model, "model_id", "")
