@@ -63,7 +63,7 @@ def seal_features(features_path: Path, models_path: Path, output: Path) -> dict[
     assert_feature_only(features)
     historical = HistoricalPortfolioAdapter()
     calibrators = joblib.load(models_path / "common_calibrators.joblib")
-    models: dict[str, object] = {name: historical for name in ("HIST_C1", "HIST_C3", "HIST_E7")}
+    models: dict[str, object] = dict.fromkeys(("HIST_C1", "HIST_C3", "HIST_E7"), historical)
     for path in models_path.glob("*.joblib"):
         if path.name == "common_calibrators.joblib":
             continue

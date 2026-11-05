@@ -80,7 +80,7 @@ def build_historical_role_marts(
     for name, ids in selections.items():
         masks[name][ids] = True
     writers: dict[str, pq.ParquetWriter] = {}
-    counts = {name: 0 for name in selections}
+    counts = dict.fromkeys(selections, 0)
     rows_seen = 0
     try:
         for chunk in pd.read_csv(
