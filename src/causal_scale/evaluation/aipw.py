@@ -10,17 +10,51 @@ def dr_effect_score(
     mu1: np.ndarray,
     propensity: float | np.ndarray,
 ) -> np.ndarray:
-    y, t, m0, m1 = (np.asarray(value, dtype=float) for value in (outcome, treatment, mu0, mu1))
+    """Compute the doubly robust treatment effect score for each observation."""
+    observed_outcome, observed_treatment, control_mean, treated_mean = (
+        np.asarray(value, dtype=float) for value in (outcome, treatment, mu0, mu1)
+    )
     if (
-        any(value.ndim != 1 for value in (y, t, m0, m1))
-        or len({len(value) for value in (y, t, m0, m1)}) != 1
+        any(
+            value.ndim != 1
+            for value in (
+                observed_outcome,
+                observed_treatment,
+                control_mean,
+                treated_mean,
+            )
+        )
+        or len(
+            {
+                len(value)
+                for value in (
+                    observed_outcome,
+                    observed_treatment,
+                    control_mean,
+                    treated_mean,
+                )
+            }
+        )
+        != 1
     ):
         raise ValueError("AIPW inputs must be aligned vectors")
-    p = np.asarray(propensity, dtype=float)
-    if p.ndim > 1 or not np.isfinite(p).all() or (p <= 0).any() or (p >= 1).any():
+    treatment_probability = np.asarray(propensity, dtype=float)
+    if (
+        treatment_probability.ndim > 1
+        or not np.isfinite(treatment_probability).all()
+        or (treatment_probability <= 0).any()
+        or (treatment_probability >= 1).any()
+    ):
         raise ValueError("propensity must be in (0,1)")
-    p = np.clip(p, 0.02, 0.98)
-    return m1 - m0 + t * (y - m1) / p - (1 - t) * (y - m0) / (1 - p)
+    treatment_probability = np.clip(treatment_probability, 0.02, 0.98)
+    return (
+        treated_mean
+        - control_mean
+        + observed_treatment * (observed_outcome - treated_mean) / treatment_probability
+        - (1 - observed_treatment)
+        * (observed_outcome - control_mean)
+        / (1 - treatment_probability)
+    )
 
 
 def aipw_policy_scores(
@@ -31,20 +65,32 @@ def aipw_policy_scores(
     mu1: np.ndarray,
     propensity: float | np.ndarray,
 ) -> np.ndarray:
-    y, t, pi, m0, m1 = (
-        np.asarray(value, dtype=float) for value in (outcome, treatment, policy, mu0, mu1)
+    """Compute per-observation AIPW policy gains relative to treating nobody."""
+    observed_outcome, observed_treatment, policy_action, control_mean, treated_mean = (
+        np.asarray(value, dtype=float)
+        for value in (outcome, treatment, policy, mu0, mu1)
     )
-    if not np.isin(t, [0, 1]).all() or not np.isin(pi, [0, 1]).all():
+    if (
+        not np.isin(observed_treatment, [0, 1]).all()
+        or not np.isin(policy_action, [0, 1]).all()
+    ):
         raise ValueError("treatment and policy must be binary")
-    p = np.clip(np.asarray(propensity, dtype=float), 0.02, 0.98)
-    observed_mu = np.where(t == 1, m1, m0)
-    observed_probability = np.where(t == 1, p, 1 - p)
+    clipped_propensity = np.clip(np.asarray(propensity, dtype=float), 0.02, 0.98)
+    observed_action_mean = np.where(observed_treatment == 1, treated_mean, control_mean)
+    observed_action_probability = np.where(
+        observed_treatment == 1, clipped_propensity, 1 - clipped_propensity
+    )
 
     def value(action: np.ndarray) -> np.ndarray:
-        target_mu = np.where(action == 1, m1, m0)
-        return target_mu + (t == action) * (y - observed_mu) / observed_probability
+        target_action_mean = np.where(action == 1, treated_mean, control_mean)
+        return (
+            target_action_mean
+            + (observed_treatment == action)
+            * (observed_outcome - observed_action_mean)
+            / observed_action_probability
+        )
 
-    return value(pi) - value(np.zeros_like(pi))
+    return value(policy_action) - value(np.zeros_like(policy_action))
 
 
 def aipw_policy_value(*args: np.ndarray | float) -> float:
