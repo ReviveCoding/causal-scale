@@ -63,7 +63,7 @@ def aipw_policy_scores(
     mu1: np.ndarray,
     propensity: float | np.ndarray,
 ) -> np.ndarray:
-    """Compute per-observation AIPW policy gains relative to treating nobody."""
+    """Return per-observation AIPW gains over a no-treatment policy."""
     observed_outcome, observed_treatment, policy_action, control_mean, treated_mean = (
         np.asarray(value, dtype=float) for value in (outcome, treatment, policy, mu0, mu1)
     )
