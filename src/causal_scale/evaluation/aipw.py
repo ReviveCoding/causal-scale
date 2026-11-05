@@ -51,9 +51,7 @@ def dr_effect_score(
         treated_mean
         - control_mean
         + observed_treatment * (observed_outcome - treated_mean) / treatment_probability
-        - (1 - observed_treatment)
-        * (observed_outcome - control_mean)
-        / (1 - treatment_probability)
+        - (1 - observed_treatment) * (observed_outcome - control_mean) / (1 - treatment_probability)
     )
 
 
@@ -67,13 +65,9 @@ def aipw_policy_scores(
 ) -> np.ndarray:
     """Compute per-observation AIPW policy gains relative to treating nobody."""
     observed_outcome, observed_treatment, policy_action, control_mean, treated_mean = (
-        np.asarray(value, dtype=float)
-        for value in (outcome, treatment, policy, mu0, mu1)
+        np.asarray(value, dtype=float) for value in (outcome, treatment, policy, mu0, mu1)
     )
-    if (
-        not np.isin(observed_treatment, [0, 1]).all()
-        or not np.isin(policy_action, [0, 1]).all()
-    ):
+    if not np.isin(observed_treatment, [0, 1]).all() or not np.isin(policy_action, [0, 1]).all():
         raise ValueError("treatment and policy must be binary")
     clipped_propensity = np.clip(np.asarray(propensity, dtype=float), 0.02, 0.98)
     observed_action_mean = np.where(observed_treatment == 1, treated_mean, control_mean)
